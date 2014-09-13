@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//www.marudot.com//iCal Event Maker
+X-WR-CALNAME:Dan & Alina's Wedding
+X-WR-TIMEZONE:America/New_York
+BEGIN:VEVENT
+DTSTAMP:20140913T154336Z
+UID:20140913T154336Z-805113440@marudot.com
+DTSTART;TZID=America/New_York:20150412T143000
+DTEND;TZID=America/New_York:20150412T153000
+SUMMARY:Dan & Alina's Wedding Ceremony
+DESCRIPTION:Well this should be pretty great!
+LOCATION:Stirling Ave Mennonite Church\, Kitchener ON
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20140913T154336Z
+UID:20140913T154336Z-837266301@marudot.com
+DTSTART;TZID=America/New_York:20150412T173000
+DTEND;TZID=America/New_York:20150412T230000
+SUMMARY:Dan & Alina's Wedding Reception
+DESCRIPTION:Well this should be pretty great!
+LOCATION:Victoria Park Pavilion\, Kitchener ON
+END:VEVENT
+END:VCALENDAR

@@ -91,6 +91,17 @@ app.use(router);
 // available to the client.
 router.get('/', [ middleware.exposeTemplates(), routes.render('home') ]);
 
+router.get('/directions', [ middleware.exposeTemplates(), routes.render('directions') ]);
+
+router.get('/accomodation', [ middleware.exposeTemplates(), routes.render('accomodation') ]);
+
+router.get('/registry', [ middleware.exposeTemplates(), routes.render('registry') ]);
+
+router.get('/RSVP', [ middleware.exposeTemplates(), routes.render('RSVP') ]);
+
+router.get('/contact', [ middleware.exposeTemplates(), routes.render('contact') ]);
+
+
 // A Route for Creating a 500 Error (Useful to keep around)
 router.get('/500', routes.render);
 
