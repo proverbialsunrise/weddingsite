@@ -26,6 +26,11 @@ h1 small {
     font-weight: normal;
 }
 
+h1 {
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 48pt;
+}
+
 .btn, a.btn {
     background: transparent;
     border: 2px solid rgb(174, 216, 255);
