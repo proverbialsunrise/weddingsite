@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>{{title}}</title>
+
+    {{!-- If you dont want to use Pure, delete out the snippet below --}}
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <!--[if lte IE 8]>
+            {{addRemoteCSS "http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css"}}
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            {{addRemoteCSS "http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css"}}
+        <!--<![endif]-->
+        
+    {{addLocalCSS "/css/app.css"}}
+    {{addLocalCSS "/css/side-menu.css"}}
+    
+
+    {{#remoteCSS}}
+    <link rel="stylesheet" href="{{{.}}}">
+    {{/remoteCSS}}
+
+    {{#localCSS}}
+      {{#if this.oldIE}}
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="{{{this.oldIE}}}">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="{{{this.path}}}">
+        <!--<![endif]-->
+      {{else}}
+        <link rel="stylesheet" href="{{{this.path}}}">
+      {{/if}}
+    {{/localCSS}}
+
+</head>
+
+<body lang="en">
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">DAN & ALINA</a>
+
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+
+                <li class="menu-item-divided pure-menu-selected">
+                    <a href="#">Services</a>
+                </li>
+
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+
+        <div class="header">
+            <div class="pure-g">
+            <div class="pure-u-1-4">
+                <img class="pure-img-responsive" src="/img/alinaDisc.jpg" alt="Alina catches things!">
+            </div>
+            <div class="pure-u-1-4">
+                <img class="pure-img-responsive" src="/img/djabp.jpg" alt="Is that a tree?">
+            </div>
+            <div class="pure-u-1-4">
+                <img class="pure-img-responsive" src="/img/alinaDanWedding.jpg" alt="Hmmm...nice!">
+            </div>
+            <div class="pure-u-1-4">
+                <img class="pure-img-responsive" src="/img/danFrisbee.jpg" alt="How about that calf?">
+            </div>
+        </div>
+        <h1>Dan & Alina</h1>
+        <h2>April 12, 2014</h2>
+    </div>
+
+    {{{body}}}
+
+</div>
+
+   
+    <script>
+        // data exposed by express-state
+        {{{state}}}
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    {{!-- Uncomment the line below if you want to use Bootstrap's JS modules --}}
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    {{addLocalJS "/js/script.js"}}
+
+    {{#localJS}}
+        <script src="{{{.}}}"></script>
+    {{/localJS}}
+</body>
+
+</html>
