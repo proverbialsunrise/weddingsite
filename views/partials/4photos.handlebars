@@ -1,15 +1,8 @@
-        <div class="pure-g">
-            <div class="pure-u-1-4">
-                <img class="pure-img-responsive" src="/img/alinaDisc.jpg" alt="Alina catches things!">
-            </div>
-            <div class="pure-u-1-4">
-                <img class="pure-img-responsive" src="/img/djabp.jpg" alt="Is that a tree?">
-            </div>
-            <div class="pure-u-1-4">
-                <img class="pure-img-responsive" src="/img/alinaDanWedding.jpg" alt="Hmmm...nice!">
-            </div>
-            <div class="pure-u-1-4">
-                <img class="pure-img-responsive" src="/img/danFrisbee.jpg" alt="How about that calf?">
-            </div>
-        </div>
+<div class="pure-g">  
+    {{#each images}} 
+    <div class="pure-u-1-4">
+        <img class="pure-img-responsive" src="{{path}}" alt="{{alt}}">
+    </div>
+    {{/each}}
+</div>
 

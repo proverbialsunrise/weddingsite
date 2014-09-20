@@ -26,12 +26,12 @@ app.enable('view cache');
 //app.enable('strict routing');
 
 //Change "App" to whatever your application's name is, or leave it like this.
-app.set('state namespace', 'App');
+app.set('state namespace', 'dalina');
 
 //Create an empty Data object and expose it to the client. This
 //will be available on the client under App.Data.
 //This is just an example, so feel free to remove this.
-app.expose({}, 'Data');
+app.expose({}, 'imagePaths');
 
 if (app.get('env') === 'development') {
     app.use(middleware.logger('tiny'));
@@ -76,6 +76,12 @@ app.use(function(err, req, res, next) {
     }
 });
 
+app.use(function(req, res, next) {
+    res.locals.images = utils.imagesFromInterval(1,37,4);
+    console.log(res.locals.images);
+    next();
+});
+
 
 // Use the router.
 app.use(router);
@@ -86,6 +92,7 @@ app.use(router);
 ///////////////////////////////////////////
 
 /////// ADD ALL YOUR ROUTES HERE  /////////
+//A function to add 4 random image paths to each thing to render.
 
 // The exposeTemplates() method makes the Handlebars templates that are inside /shared/templates/
 // available to the client.
