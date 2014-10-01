@@ -4,14 +4,43 @@
     </div>
 
 
+<div class="content">
 
-        <div class="content">
 
-            <h2 class="content-subhead">Now Let's Speak Some Latin</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+<form class="pure-form pure-form-stacked">
+    <fieldset>
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Name" required>
 
-        </div>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Email" required>
+    </fieldset>
+    <fieldset>
+        <label for="mealSelection">Meal Selection</label>
+        <label for="meal-lamb" class="pure-radio">
+            <input id="meal-lamb" type="radio" name="mealSelection" value="lamb" checked>
+            Leg of Lamb, stuffed with garlic, sun dried tomato and feta, Greek-style potatoes, bouquetiere of vegetables, finished with basil infused oil.
+        </label>
+
+        <label for="meal-turkey" class="pure-radio">
+            <input id="meal-turkey" type="radio" name="mealSelection" value="turkey">
+            Free-Run Turkey breast, stuffed with arugula, pancetta, gouda and rosemary, served with a fines herbs cream, “Lava” potato and harvest vegetable medley.
+        </label>
+
+        <label for="meal-vegan" class="pure-radio">
+            <input id="meal-vegan" type="radio" name="mealSelection" value="vegan">
+            Seared Tofu, Peppercorn tamari jus, roast baby potato, market vegetable.
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <label for="extrainfo">Additional Information</label>
+        <textarea class="message" id="message" type="text" placeholder="Add your special requests here..."></textarea>
+    </fieldset>
+
+    <button type="submit" class="pure-button pure-button-primary button-submit">Send RSVP</button>
+
+    </form>
     </div>
+</div>
 

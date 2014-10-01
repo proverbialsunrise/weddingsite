@@ -78,7 +78,7 @@ app.use(function(err, req, res, next) {
 
 app.use(function(req, res, next) {
     res.locals.images = utils.imagesFromInterval(1,37,4);
-    console.log(res.locals.images);
+    //console.log(res.locals.images);
     next();
 });
 
