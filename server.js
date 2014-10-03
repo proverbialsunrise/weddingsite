@@ -16,6 +16,41 @@ server       = app.listen(port, function () {
 }),
 router;
 
+//Setup Database Connection and Required Schemas.
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://weddingwebsite:Sonwhitil3n@ds045087.mongolab.com:45087/danalina')
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  console.log('Opened Database Connection');
+});
+
+var rsvpSchema = mongoose.Schema({
+    name: String,
+    email: String,
+    mealSelection: String,
+    extraInfo: String
+});
+
+var RSVP = mongoose.model('RSVP', rsvpSchema);
+
+
+//Setup NodeMailier for contact page. 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'thedanieljohnson@gmail.com',
+        pass: '#)iPL!n,a8zX'
+    }
+});
+
+
+
+
 //Setup Express App
 state.extend(app);
 app.engine(hbs.extname, hbs.engine);
@@ -78,7 +113,6 @@ app.use(function(err, req, res, next) {
 
 app.use(function(req, res, next) {
     res.locals.images = utils.imagesFromInterval(1,37,4);
-    //console.log(res.locals.images);
     next();
 });
 
@@ -107,6 +141,45 @@ router.get('/registry', [ middleware.exposeTemplates(), routes.render('registry'
 router.get('/RSVP', [ middleware.exposeTemplates(), routes.render('RSVP') ]);
 
 router.get('/contact', [ middleware.exposeTemplates(), routes.render('contact') ]);
+
+router.post('/RSVP', function(req, res) {
+    //Create a new RSVP
+    var newRSVP = new RSVP(req.body);
+    //Save it to the Database
+    newRSVP.save(function (err, newRSVP) {
+    
+    if (err) {
+        return console.error(err);
+        res.status(400).send("Failed");
+    } 
+        
+    res.status(200).send(newRSVP);
+    console.log('Saved RSVP');
+    });
+});
+
+router.post('/contact', function(req, res) {
+    //Setup the email
+    console.log(req.body);
+    var mailOptions = {
+    from: req.body.email, // sender address
+    to: 'dan@ddajohnson.com', // list of receivers
+    subject: 'Email From Wedding Website', // Subject line
+    text: req.body.message, // plaintext body
+    html: req.body.message // html body
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        console.log(error);
+        res.status(400).send('Your email did not send: ' + error);
+    }else{
+        console.log('Message sent: ' + info.response);
+        res.status(200).send('Your email did send! Woohoo!');
+    }});
+});
+
+
 
 
 // A Route for Creating a 500 Error (Useful to keep around)

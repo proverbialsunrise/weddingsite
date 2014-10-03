@@ -5,17 +5,17 @@
 
         <div class="content">
  
-<form class="pure-form pure-form-stacked">
+<form class="pure-form pure-form-stacked" action="/contact" method="post">
     <fieldset>
         
         <label for="name">Name</label>
-        <input id="name" type="text" placeholder="Name" required>
+        <input id="name" name="name" type="text" placeholder="Name" required>
 
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="Email" required>
+        <input id="email" name="email" type="email" placeholder="Email" required>
 
         <label for="message">Message</label>
-        <textarea class="message" id="message" type="text" placeholder="Type your message here..." required></textarea>
+        <textarea class="message" id="message" name="message" type="text" placeholder="Type your message here..." required></textarea>
     </fieldset>
     <button type="submit" class="pure-button pure-button-primary button-submit">Send Message</button>
 
