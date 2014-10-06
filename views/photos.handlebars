@@ -1,0 +1,21 @@
+    <div class="header">
+        {{> 4photos}}
+    <h1>Photos</h1>
+    </div>
+
+
+        <div class="content">
+
+            This website has 4 random photos at the top for every page.  If you want to see all of these photos in one place, this is the place for you!
+
+            <div class="pure-g">  
+
+                {{#each allphotos}} 
+                <div class="pure-u-1-1 photoDiv">
+                    <img class="pure-img-responsive" src="{{path}}" alt="{{alt}}">
+                </div>
+                
+                {{/each}}
+            </div>
+        </div>
+    </div>
