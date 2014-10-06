@@ -47,3 +47,42 @@ textarea.message {
     height:150px;
 }
 
+
+.google-maps {
+    position: relative;
+    padding-bottom: 75%; // This is the aspect ratio
+    height: 0;
+    overflow: hidden;
+}
+
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+.pure-g > div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.l-box {
+    padding: 1em;
+}
+
+.headerrow {
+    background-color:#3ad991;
+    color:#000000;
+    text-transform: uppercase;
+    border-bottom:solid;
+}
+
+.guestrow {
+    color:#000000;
+    border-bottom:solid;
+    border-width:1px;
+}
+

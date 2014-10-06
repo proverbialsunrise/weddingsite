@@ -36,20 +36,8 @@ var rsvpSchema = mongoose.Schema({
 
 var RSVP = mongoose.model('RSVP', rsvpSchema);
 
-
-//Setup NodeMailier for contact page. 
-var nodemailer = require('nodemailer');
-
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'thedanieljohnson@gmail.com',
-        pass: '#)iPL!n,a8zX'
-    }
-});
-
-
-
+//Setup postmark to send email.  
+var postmark = require("postmark")("dd9d8d71-3f57-47ae-a580-8ab2b5a6b8c8");
 
 //Setup Express App
 state.extend(app);
@@ -142,6 +130,16 @@ router.get('/RSVP', [ middleware.exposeTemplates(), routes.render('RSVP') ]);
 
 router.get('/contact', [ middleware.exposeTemplates(), routes.render('contact') ]);
 
+router.get('/guests', function (req, res) {
+    RSVP.find(function (err, guests) {
+        if (err) return console.error(err);
+        res.locals.guests = guests;
+        res.render('guests');
+        console.log(guests);
+    });
+});
+
+
 router.post('/RSVP', function(req, res) {
     //Create a new RSVP
     var newRSVP = new RSVP(req.body);
@@ -161,22 +159,22 @@ router.post('/RSVP', function(req, res) {
 router.post('/contact', function(req, res) {
     //Setup the email
     console.log(req.body);
-    var mailOptions = {
-    from: req.body.email, // sender address
-    to: 'dan@ddajohnson.com', // list of receivers
-    subject: 'Email From Wedding Website', // Subject line
-    text: req.body.message, // plaintext body
-    html: req.body.message // html body
-    };
 
-    transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        console.log(error);
-        res.status(400).send('Your email did not send: ' + error);
-    }else{
-        console.log('Message sent: ' + info.response);
-        res.status(200).send('Your email did send! Woohoo!');
-    }});
+
+    postmark.send({
+        "From": "\"" + req.body.name + "\"" + "dan@ddajohnson.com",
+        "To": "dan@ddajohnson.com, alinabp@gmail.com", 
+        "Subject": "Contact Request from Wedding Site: " + req.body.name,
+        "TextBody": req.body.message,
+        "ReplyTo": req.body.email
+    }, function(error, success) {
+        if(error) {
+            console.error("Unable to send via postmark: " + error.message);
+            res.status(400).send(error.message);
+        }
+        res.status(200).send();
+        console.info("Sent to postmark for delivery")
+    });
 });
 
 

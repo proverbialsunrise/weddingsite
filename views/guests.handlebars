@@ -1,0 +1,40 @@
+    <div class="header">
+        {{> 4photos}}
+        <h1>Guest Responses</h1>
+    </div>
+
+
+        <div class="CONTENT">
+
+            <div class="pure-g">  
+
+                <div class="pure-u-1-1 headerrow">
+                    <div class="pure-u-1-6 l-box">
+                        Name
+                    </div>
+                    <div class="pure-u-1-6 l-box">
+                        Meal
+                    </div>
+                    <div class="pure-u-1-3 l-box">
+                        Comments
+                    </div>
+                </div>
+
+
+                {{#each guests}} 
+                <div class="pure-u-1-1 guestrow">
+                    <div class="pure-u-1-6 l-box">
+                        {{name}}
+                    </div>
+                    <div class="pure-u-1-6 l-box">
+                        {{mealSelection}}
+                    </div>
+                    <div class="pure-u-1-3 l-box">
+                        {{extraInfo}}
+                    </div>
+                </div>
+                
+                {{/each}}
+            </div>
+        </div>
+    </div>

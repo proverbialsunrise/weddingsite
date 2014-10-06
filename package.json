@@ -15,7 +15,7 @@
     "morgan": "^1.2.2",
     "ypromise": "^0.2.3",
     "mongoose": "^3.0",
-    "nodemailer": "^1"
+    "postmark": "0.2.6"
   },
   "devDependencies": {
     "vows": "0.5.x",
