@@ -86,3 +86,11 @@ textarea.message {
     border-width:1px;
 }
 
+.photoDiv {
+    text-align:center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+

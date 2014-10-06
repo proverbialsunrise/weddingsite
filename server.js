@@ -130,6 +130,13 @@ router.get('/RSVP', [ middleware.exposeTemplates(), routes.render('RSVP') ]);
 
 router.get('/contact', [ middleware.exposeTemplates(), routes.render('contact') ]);
 
+router.get('/photos', function (req, res) {
+    allphotos = utils.allImagesFromInterval(1,37);
+    res.locals.allphotos = allphotos;
+    res.render('photos'); 
+
+});
+    
 router.get('/guests', function (req, res) {
     RSVP.find(function (err, guests) {
         if (err) return console.error(err);
