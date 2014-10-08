@@ -119,29 +119,49 @@ app.use(router);
 
 // The exposeTemplates() method makes the Handlebars templates that are inside /shared/templates/
 // available to the client.
-router.get('/', [ middleware.exposeTemplates(), routes.render('home') ]);
+router.get('/', function (req, res) {
+    res.locals.title = "Dan & Alina";
+    res.render('home') 
+});
 
-router.get('/directions', [ middleware.exposeTemplates(), routes.render('directions') ]);
+router.get('/directions', function (req, res) {
+    res.locals.title = "Dan & Alina | Directions";
+    res.render('directions') 
+});
 
-router.get('/accomodation', [ middleware.exposeTemplates(), routes.render('accomodation') ]);
+router.get('/accomodation', function (req, res) {
+    res.locals.title = "Dan & Alina | Accomodation";
+    res.render('accomodation') 
+});
 
-router.get('/registry', [ middleware.exposeTemplates(), routes.render('registry') ]);
+router.get('/registry', function (req, res) {
+    res.locals.title = "Dan & Alina | Registry";
+    res.render('registry') 
+});
 
-router.get('/RSVP', [ middleware.exposeTemplates(), routes.render('RSVP') ]);
+router.get('/RSVP', function (req, res) {
+    res.locals.title = "Dan & Alina | RSVP";
+    res.render('RSVP') 
+});
 
-router.get('/contact', [ middleware.exposeTemplates(), routes.render('contact') ]);
+router.get('/contact', function (req, res) {
+    res.locals.title = "Dan & Alina | Contact";
+    res.render('contact');
+});
 
 router.get('/photos', function (req, res) {
     allphotos = utils.allImagesFromInterval(1,37);
     res.locals.allphotos = allphotos;
+    res.locals.title = "Dan & Alina | Photos";
     res.render('photos'); 
-
 });
     
 router.get('/guests', function (req, res) {
+    middleware.exposeTemplates();
     RSVP.find(function (err, guests) {
         if (err) return console.error(err);
         res.locals.guests = guests;
+        res.locals.title = "Dan + Alina | Guests";
         res.render('guests');
         console.log(guests);
     });
@@ -153,12 +173,10 @@ router.post('/RSVP', function(req, res) {
     var newRSVP = new RSVP(req.body);
     //Save it to the Database
     newRSVP.save(function (err, newRSVP) {
-    
         if (err) {
-            return console.error(err);
             res.status(400).send("Failed");
+            return console.error(err);
         } 
-        
         res.status(200).send(newRSVP);
         console.log('Saved RSVP');
     });
