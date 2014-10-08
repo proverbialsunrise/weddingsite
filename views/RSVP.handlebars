@@ -1,7 +1,7 @@
 <div class="header">
         {{> 4photos}}
         <h1>RSVP</h1>
-    </div>
+</div>
 
 
 <div class="content">
@@ -14,19 +14,30 @@
         <input id="email" type="email" name="email" placeholder="Email" required>
     </fieldset>
     <fieldset>
-        <label for="mealSelection">Meal Selection</label>
+        <label for="attendance">Do you plan to attend this super-duper awesome time?</label>
+        <label for="yes" class="pure-radio">
+            <input id="yes" type="radio" name="attendance" value="yes" required>
+            Yes, it would be a great pleasure!
+        </label>       
+        <label for="no" class="pure-radio">
+            <input id="no" type="radio" name="attendance" value="no" required>
+            No, I regretfully will be unable to attend. 
+        </label>
+    </fieldset>
+    <fieldset id="mealsSection">
+        <label for="mealSelection"><strong>Meal Selection</strong></label>
         <label for="meal-lamb" class="pure-radio">
-            <input id="meal-lamb" type="radio" name="mealSelection" value="lamb" checked>
+            <input id="meal-lamb" type="radio" name="mealSelection" value="lamb" required checked>
             Leg of Lamb, stuffed with garlic, sun-dried tomato and feta, Greek-style potatoes, bouquetiere of vegetables. Finished with basil infused oil.
         </label>
 
         <label for="meal-turkey" class="pure-radio">
-            <input id="meal-turkey" type="radio" name="mealSelection" value="turkey">
+            <input id="meal-turkey" type="radio" name="mealSelection" value="turkey" required>
             Free-Run Turkey breast, stuffed with arugula, pancetta, gouda and rosemary. Served with a fine herbs cream, “Lava” potato and harvest vegetable medley.
         </label>
 
         <label for="meal-vegan" class="pure-radio">
-            <input id="meal-vegan" type="radio" name="mealSelection" value="vegan">
+            <input id="meal-vegan" type="radio" name="mealSelection" value="vegan" required>
             Seared Tofu, Peppercorn tamari jus, roast baby potato, market vegetable.
         </label>
     </fieldset>
@@ -78,9 +89,22 @@
     });
 
 
+    $("form input:radio").change(function () {
+    if ($(this).val() == "yes") {
+        // Show the meal section.
+        $('#mealsSection').show();
+        } else { 
+            if ($(this).val() == "no") {
+                // Hide the meal section. 
+                $('#mealsSection').hide();
+            }
+        }
+    });
+
     $(document).ready(function(event) {
         $("#successMessage").hide();
         $("#failedMessage").hide();
+        $("#mealsSection").hide();
     });
 </script>
 

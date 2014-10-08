@@ -30,6 +30,7 @@ db.once('open', function callback () {
 var rsvpSchema = mongoose.Schema({
     name: String,
     email: String,
+    attendance: String,
     mealSelection: String,
     extraInfo: String
 });
@@ -153,13 +154,13 @@ router.post('/RSVP', function(req, res) {
     //Save it to the Database
     newRSVP.save(function (err, newRSVP) {
     
-    if (err) {
-        return console.error(err);
-        res.status(400).send("Failed");
-    } 
+        if (err) {
+            return console.error(err);
+            res.status(400).send("Failed");
+        } 
         
-    res.status(200).send(newRSVP);
-    console.log('Saved RSVP');
+        res.status(200).send(newRSVP);
+        console.log('Saved RSVP');
     });
 });
 
