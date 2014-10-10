@@ -64,9 +64,10 @@ The content `<div>` is where all your content goes.
     }
      .header h2 {
         font-weight: 300;
-        color: #ccc;
+        font-size: 2em;
+        font-family: 'Sue Ellen Francisco', cursive;;
         padding: 0;
-        margin-top: 0;
+        margin-top: -20px;
     }
 
 .content-subhead {
