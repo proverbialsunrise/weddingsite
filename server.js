@@ -149,6 +149,11 @@ router.get('/contact', function (req, res) {
     res.render('contact');
 });
 
+router.get('/saskatchewan', function (req, res) {
+    res.locals.title = "Dan & Alina | Saskatchewan Celebration";
+    res.render('saskatchewan');
+});
+
 router.get('/photos', function (req, res) {
     allphotos = utils.allImagesFromInterval(1,37);
     res.locals.allphotos = allphotos;
