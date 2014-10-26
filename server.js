@@ -101,7 +101,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.use(function(req, res, next) {
-    res.locals.images = utils.imagesFromInterval(1,37,4);
+    res.locals.images = utils.imagesFromInterval(1,56,4);
     next();
 });
 
@@ -155,7 +155,7 @@ router.get('/saskatchewan', function (req, res) {
 });
 
 router.get('/photos', function (req, res) {
-    allphotos = utils.allImagesFromInterval(1,37);
+    allphotos = utils.allImagesFromInterval(1,56);
     res.locals.allphotos = allphotos;
     res.locals.title = "Dan & Alina | Photos";
     res.render('photos'); 
