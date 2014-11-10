@@ -16,18 +16,15 @@ server       = app.listen(port, function () {
 }),
 router;
 
-//Setup Database Connection and Required Schemas.
-var mongoose = require('mongoose');
+//Mongoose and postmark are available through the config since they have API keys/passwords.
 
-mongoose.connect('mongodb://weddingwebsite:Sonwhitil3n@ds045087.mongolab.com:45087/danalina')
-
-var db = mongoose.connection;
+var db = config.mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
   console.log('Opened Database Connection');
 });
 
-var rsvpSchema = mongoose.Schema({
+var rsvpSchema = config.mongoose.Schema({
     name: String,
     email: String,
     attendance: String,
@@ -35,10 +32,7 @@ var rsvpSchema = mongoose.Schema({
     extraInfo: String
 });
 
-var RSVP = mongoose.model('RSVP', rsvpSchema);
-
-//Setup postmark to send email.  
-var postmark = require("postmark")("dd9d8d71-3f57-47ae-a580-8ab2b5a6b8c8");
+var RSVP = config.mongoose.model('RSVP', rsvpSchema);
 
 //Setup Express App
 state.extend(app);
@@ -192,7 +186,7 @@ router.post('/contact', function(req, res) {
     console.log(req.body);
 
 
-    postmark.send({
+    config.postmark.send({
         "From": "\"" + req.body.name + "\"" + "dan@ddajohnson.com",
         "To": "dan@ddajohnson.com, alinabp@gmail.com", 
         "Subject": "Contact Request from Wedding Site: " + req.body.name,
