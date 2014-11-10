@@ -1,5 +1,6 @@
-![](http://f.cl.ly/items/3Q352X0U3H2s0V043o0I/Screenshot%202014-09-04%2001.02.48.png)
+#Wedding Website
 
-Bedrock is a quick way to start an [Express](http://expressjs.com) app with nice defaults without having to worry about setup and configuration. It is a collection of modules and libraries that I find myself using in almost every Express app that I make. Bedrock removes the repetition that is involved when building a new Express app.
+The code for my wedding website built using [Bedrock](http://tilomitra.github.io/bedrock) and NodeJS.  Uses [PureCSS](http://purecss.io/) as a CSS framework.  The completed site can be found at [wedding.danandalina.com](http://wedding.danandalina.com).
 
-## [View Documentation](http://tilomitra.github.io/bedrock)
+Hosts easily on Heroku.
+
